@@ -1,4 +1,0 @@
-pixopoint
-=========
-
-PixoPoint theme
