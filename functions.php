@@ -8,10 +8,10 @@
  * @copyright Copyright (c), Ryan Hellyer
  * @license http://www.gnu.org/licenses/gpl.html GPL
  * @author Ryan Hellyer <ryanhellyer@gmail.com>
- * @package Hellish Simplicity
- * @since Hellish Simplicity 1.5
+ * @package PixoPoint
+ * @since PixoPoint 1.5
  */
-class Hellish_Setup {
+class PixoPoint_Setup {
 
 	/**
 	 * Constructor
@@ -74,8 +74,8 @@ class Hellish_Setup {
 		 * Adds the "Header" page to the admin area
 		 */
 		$theme_page = add_theme_page(
-			__( 'Header', 'hellish' ),   // Page title
-			__( 'Header', 'hellish' ),   // Menu title
+			__( 'Header', 'pixopoint' ),   // Page title
+			__( 'Header', 'pixopoint' ),   // Menu title
 			'edit_theme_options',        // Capability
 			'header',                    // Menu slug
 			array( $this, 'admin_page' ) // The page content
@@ -86,8 +86,8 @@ class Hellish_Setup {
 		 * Adds the "Customize" page to the admin area
 		 */
 		add_theme_page(
-			__( 'Customize', 'hellish' ),
-			__( 'Customize', 'hellish' ),
+			__( 'Customize', 'pixopoint' ),
+			__( 'Customize', 'pixopoint' ),
 			'edit_theme_options',
 			'customize.php'
 		);
@@ -141,17 +141,17 @@ class Hellish_Setup {
 	public function admin_page() { ?>
 	<div class="wrap">
 		<div id="icon-themes" class="icon32"><br /></div>
-		<h2><?php _e( 'Custom Header', 'hellish' ); ?></h2><?php
+		<h2><?php _e( 'Custom Header', 'pixopoint' ); ?></h2><?php
 
 		// Display notice when page is updated
 		if ( isset( $_REQUEST['settings-updated'] ) ) { ?>
-		<div class="updated fade"><p><strong><?php _e( 'Options saved', 'hellish' ); ?></strong></p></div><?php
+		<div class="updated fade"><p><strong><?php _e( 'Options saved', 'pixopoint' ); ?></strong></p></div><?php
 		} ?>
 
 		<form id="hellish-form" action="options.php" method="post">
 			<?php settings_fields( 'header' ); ?>
 
-			<h3><?php _e( 'Header Text', 'hellish' ); ?></h3>
+			<h3><?php _e( 'Header Text', 'pixopoint' ); ?></h3>
 
 			<table class="form-table">
 				<tbody>
@@ -174,7 +174,7 @@ class Hellish_Setup {
 								?></textarea>
 							</p>
 							<p>
-								<?php _e( 'Example text:', 'hellish' ); ?> <code>Hellish&lt;span&gt;Simplicity&lt;/span&gt;&lt;small&gt;.com&lt;/small&gt;</code>
+								<?php _e( 'Example text:', 'pixopoint' ); ?> <code>Hellish&lt;span&gt;Simplicity&lt;/span&gt;&lt;small&gt;.com&lt;/small&gt;</code>
 							</p>
 						</td>
 					</tr>
@@ -182,7 +182,7 @@ class Hellish_Setup {
 			</table>
 
 			<p>
-				<input type="submit" class="button" id="save" name="save" value="<?php _e( 'Save &raquo;', 'hellish' ) ?>" />
+				<input type="submit" class="button" id="save" name="save" value="<?php _e( 'Save &raquo;', 'pixopoint' ) ?>" />
 			</p>
 		</form>
 	</div><?php
@@ -211,7 +211,7 @@ class Hellish_Setup {
 	public function theme_setup() {
 	
 		// Make theme available for translation
-		load_theme_textdomain( 'hellish', get_template_directory() . '/languages' );
+		load_theme_textdomain( 'pixopoint', get_template_directory() . '/languages' );
 
 		// Add default posts and comments RSS feed links to head
 		add_theme_support( 'automatic-feed-links' );
@@ -228,7 +228,7 @@ class Hellish_Setup {
 	public function widgets_init() {
 		register_sidebar(
 			array(
-				'name'          => __( 'Sidebar', 'hellish' ),
+				'name'          => __( 'Sidebar', 'pixopoint' ),
 				'id'            => 'sidebar',
 				'before_widget' => '<aside id="%1$s" class="%2$s">',
 				'after_widget'  => '</aside>',
@@ -253,12 +253,12 @@ class Hellish_Setup {
 			'capability'        => 'edit_theme_options',
 		) );
 		$wp_customize->add_section( 'header_text', array(
-			'title'             => __( 'Header Text', 'hellish' ),
+			'title'             => __( 'Header Text', 'pixopoint' ),
 			'priority'          => 10,
 		) );
 		$wp_customize->add_control( 'header-text', array(
 			'section'           => 'header_text',
-			'label'             => __( 'Header text', 'hellish' ),
+			'label'             => __( 'Header text', 'pixopoint' ),
 			'type'              => 'text',
 		) );
 	
@@ -271,7 +271,7 @@ class Hellish_Setup {
 		echo '
 		<li>
 			<p>
-				' . __( 'Example text:', 'hellish' ) . ' <code>Hellish&lt;span&gt;Simplicity&lt;/span&gt;&lt;small&gt;.tld&lt;/small&gt;</code>
+				' . __( 'Example text:', 'pixopoint' ) . ' <code>Hellish&lt;span&gt;Simplicity&lt;/span&gt;&lt;small&gt;.tld&lt;/small&gt;</code>
 			</p>
 		</li>';
 	}
@@ -293,4 +293,4 @@ class Hellish_Setup {
 	}
 
 }
-new Hellish_Setup;
+new PixoPoint_Setup;

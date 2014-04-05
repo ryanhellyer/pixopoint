@@ -50,13 +50,12 @@ a:hover {
   position: relative;
   width: 88%;
   padding: 0 6%;
-  height: 232px;
-  overflow: auto;
+  min-height: 232px;
   background-image: linear-gradient(to bottom, white 40%, whitesmoke 100%); }
   #site-header .hgroup {
     margin: 0 auto;
-    max-width: 1110px;
-    height: 232px;
+    max-width: 1310px;
+    min-height: 232px;
     overflow: hidden;
     position: relative; }
   #site-header h1 {
@@ -66,7 +65,7 @@ a:hover {
     font-size: 2.1em;
     line-height: 1.1em;
     font-weight: normal;
-    margin: 53px 0 0 2%; }
+    margin: 1em 0 1.8em 2%; }
     #site-header h1 a {
       color: #aaa; }
       #site-header h1 a:hover {
@@ -78,16 +77,18 @@ a:hover {
       #site-header h1 a small {
         font-size: 65%; }
   #site-header h2 {
+    float: right;
+    width: 30%;
     font-family: sans-serif;
     font-size: 1em;
     line-height: 1.2em;
-    float: right;
     font-weight: normal;
-    margin: 3em 33% 0 2%;
+    margin: 3em 24% 0 2%;
     color: #999; }
   #site-header img {
     width: auto;
     height: 227px;
+    height: 10em;
     position: absolute;
     right: 6%;
     bottom: 0;
@@ -106,13 +107,14 @@ a:hover {
     width: 94%;
     padding: 0 3%;
     border-bottom: 1px solid #85cc0b;
-    overflow: auto; }
+    overflow: visible; }
   #nav ul {
     margin: 0 auto;
     padding: 0;
-    max-width: 1110px; }
+    max-width: 1310px; }
   #nav li {
     float: left;
+    position: relative;
     list-style: none; }
     #nav li:first-child a {
       border-left: none; }
@@ -121,16 +123,49 @@ a:hover {
     #nav li:hover {
       float: left;
       list-style: none;
-      background-image: linear-gradient(#90cb29, #86b82e);
-      border-bottom: 1px solid #94d22a; }
+      background-image: linear-gradient(#90cb29, #86b82e); }
       #nav li:hover a {
         text-decoration: none; }
     #nav li.current-menu-item a {
       background: url(images/menu-dot-hover.png) 90% 50% no-repeat; }
+    #nav li ul {
+      position: absolute;
+      left: -999em; }
+    #nav li:hover > ul {
+      left: 0;
+      width: 10em;
+      background-image: linear-gradient(#86b82e, #75a71d);
+      padding-bottom: 0.5em;
+      -moz-border-radius-bottomright: 0.6em;
+      -moz-border-radius-bottomleft: 0.6em;
+      border-bottom-right-radius: 0.6em;
+      border-bottom-left-radius: 0.6em;
+      -moz-box-shadow: 1px 1px 1em rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0.3em 0.4em rgba(0, 0, 0, 0.5); }
+      #nav li:hover > ul li {
+        width: 100%;
+        font-size: 0.8em;
+        line-height: 1.1em; }
+        #nav li:hover > ul li a {
+          border-left: 1px solid #a5d256; }
+        #nav li:hover > ul li ul {
+          top: -0.5em;
+          left: -999em;
+          padding-top: 0.5em;
+          -moz-border-radius-topright: 0.6em;
+          -moz-border-radius-topleft: 0.6em;
+          border-top-right-radius: 0.6em;
+          border-top-left-radius: 0.6em; }
+        #nav li:hover > ul li:hover li {
+          font-size: 1em; }
+        #nav li:hover > ul li:hover ul {
+          left: 12.4em; }
+          #nav li:hover > ul li:hover ul ul {
+            left: 10em; }
   #nav a {
     display: block;
-    padding: 0.4em 50px 0.4em 30px;
-    font-size: 18px;
+    padding: 0.4em 2.7em 0.4em 1.3em;
+    font-size: 1em;
     color: #fff;
     text-shadow: 1px 1px 1px rgba(46, 75, 8, 0.3);
     border-right: 1px solid #59a50a;
@@ -147,7 +182,11 @@ body.page-template-full-width-php #site-content {
   font-size: 1em;
   font-family: sans-serif;
   line-height: 1.8em;
-  color: #333; }
+  color: #333;
+  -moz-border-radius-bottomright: 0.6em;
+  -moz-border-radius-bottomleft: 0.6em;
+  border-bottom-right-radius: 0.6em;
+  border-bottom-left-radius: 0.6em; }
 
 h1,
 h2,
@@ -270,15 +309,20 @@ blockquote p {
 code,
 pre {
   max-width: 100%;
-  overflow: auto;
   font-family: monospace;
   font-size: 0.9em; }
 
+pre {
+  padding: 0.7em 1.2em;
+  background: #eee;
+  border: 1px solid #ddd;
+  line-height: 1em; }
+
 input[type=text] {
   border: 1px solid #dddddd;
-  border-radius: 6px;
-  -moz-border-radius: 6px;
-  -webkit-border-radius: 6px;
+  border-radius: 0.6em;
+  -moz-border-radius: 0.6em;
+  -webkit-border-radius: 0.6em;
   padding: 3% 4%; }
 
 .search-form input[type=submit],
@@ -305,16 +349,16 @@ body .wp-caption {
   margin: 1em auto;
   padding: 2% 2% 0 2%;
   border: 1px solid #dddddd;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  -ms-border-radius: 6px;
-  -o-border-radius: 6px;
-  border-radius: 6px; }
+  -webkit-border-radius: 0.6em;
+  -moz-border-radius: 0.6em;
+  -ms-border-radius: 0.6em;
+  -o-border-radius: 0.6em;
+  border-radius: 0.6em; }
 
 .wp-caption p {
   margin: 0.4em 0;
   padding: 0 0.8em;
-  font-size: 0.8em;
+  font-size: 0.7em;
   line-height: 1.5em;
   color: #666; }
 
@@ -343,17 +387,17 @@ article {
 .attachment-excerpt-thumb {
   float: right;
   max-width: 38%;
-  margin: 0 0 1em 2em; }
+  margin: 1em 0 1em 2em; }
 
 .entry-meta {
   color: #999;
   font-family: sans-serif;
-  font-size: 0.6em;
+  font-size: 0.8em;
   line-height: 1em;
   padding: 1.5em 2em;
   border-top: 1px solid #eee;
   border-bottom: 1px dotted #e5e5e5;
-  background-image: linear-gradient(#f9f9f9, white); }
+  background-image: linear-gradient(to bottom, #f9f9f9 0%, white 40%); }
 
 .alignleft {
   float: left;
@@ -397,8 +441,10 @@ td {
 /* =Sidebar
 -------------------------------------------------------------- */
 #main {
+  clear: both;
+  /* Used at smaller browser widths for clearing #nav */
   margin: 0 auto;
-  max-width: 1240px; }
+  max-width: 1440px; }
 
 #content-area {
   overflow: auto;
@@ -433,8 +479,8 @@ td {
     background: #f9f9f9;
     margin: 0 0 1.7em 0;
     padding: 0.4em 9%;
-    -moz-border-radius: 3%;
-    border-radius: 3%; }
+    -moz-border-radius: 0.6em;
+    border-radius: 0.6em; }
     #sidebar aside p {
       margin: 0;
       /* Hack to fix bug in sidebar */ }
@@ -447,19 +493,22 @@ td {
   margin: 4em 0 0 0;
   padding: 0 0 4em 0; }
   #numeric-pagination li {
+    font-size: 0.8em;
     float: left;
     list-style: none;
     margin: 0 0.3em;
     padding: 0;
-    height: 1.6em;
-    line-height: 1.6em;
+    height: 1.4em;
+    line-height: 1.4em;
     text-align: center;
     border: 1px solid #dddddd; }
+    #numeric-pagination li.extra-pages {
+      border: none; }
   #numeric-pagination a {
     float: left;
-    height: 1.3em;
+    height: 1.1em;
     margin: 0;
-    padding: 0.1em 0.5em 0.2em 0.5em; }
+    padding: 0.05em 0.5em 0.25em 0.5em; }
   #numeric-pagination li.active a,
   #numeric-pagination li a:hover {
     background: #74ad10;
@@ -469,10 +518,10 @@ td {
 /* =Comments
 -------------------------------------------------------------- */
 #comments {
-  margin: 3em 0 0 0;
+  margin: 1em 0 0 0;
   overflow: auto; }
   #comments h3 {
-    margin: 0 0 20px; }
+    margin: 0; }
 
 ol.commentlist {
   margin: 0;
@@ -486,9 +535,9 @@ ol.commentlist {
     border: 1px solid #dddddd;
     margin: 0 0 1.5em 0;
     padding: 0;
-    border-radius: 6px;
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
+    border-radius: 0.6em;
+    -moz-border-radius: 0.6em;
+    -webkit-border-radius: 0.6em;
     font-size: 0.9em;
     color: #999; }
   ol.commentlist li.trackback ul,
@@ -514,9 +563,9 @@ ol.commentlist {
     margin: 0 0 1.5em 1.5em; }
   ol.commentlist .comment-reply-link {
     background: #eee;
-    border-radius: 6px;
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
+    border-radius: 0.6em;
+    -moz-border-radius: 0.6em;
+    -webkit-border-radius: 0.6em;
     border: 1px solid #dddddd;
     font-size: 0.8em;
     padding: 0.4em 0.8em;
@@ -575,9 +624,9 @@ ol.commentlist {
   display: block;
   margin: 0 0 0.8em;
   padding: 0.5em 0.8em;
-  border-radius: 6px;
-  -moz-border-radius: 6px;
-  -webkit-border-radius: 6px;
+  border-radius: 0.6em;
+  -moz-border-radius: 0.6em;
+  -webkit-border-radius: 0.6em;
   background: #fafafa;
   border: 1px solid #dddddd;
   color: #666; }
@@ -616,9 +665,9 @@ ol.commentlist {
   background: #eee;
   color: #333;
   border: 1px solid #dddddd;
-  border-radius: 6px;
-  -moz-border-radius: 6px;
-  -webkit-border-radius: 6px;
+  border-radius: 0.6em;
+  -moz-border-radius: 0.6em;
+  -webkit-border-radius: 0.6em;
   margin: 1.5em 0 0 0;
   padding: 0.4em 1em; }
 
@@ -637,7 +686,7 @@ ol.commentlist {
 /* =Third party plugins
 -------------------------------------------------------------- */
 .metro-tabs a {
-  height: 16px; }
+  height: 10.6em; }
 
 #respond .subscribe-to-comments label {
   display: inline; }
@@ -647,20 +696,79 @@ ol.commentlist {
 #site-footer {
   clear: both;
   margin: 0 auto;
-  max-width: 1110px;
+  max-width: 1440px;
   text-align: center;
   font-family: sans-serif;
   font-size: 1em; }
 
 #site-info {
-  border-top: 1px solid #dddddd;
-  padding: 1.6em 0; }
+  margin: 0 3%;
+  text-indent: 2.5em;
+  text-align: left;
+  padding: 1.6em 0;
+  color: #777;
+  font-size: 0.9em; }
+
+.footer-blocks {
+  float: left;
+  width: 100%;
+  margin: 1.5em 0 1.1em 0; }
+  .footer-blocks div {
+    float: left;
+    width: 9%;
+    margin: 0 0.5%;
+    height: 5px;
+    background: #ddd;
+    border-bottom: 1px solid #cbcbcb;
+    -moz-border-radius: 2px;
+    border-radius: 2px; }
 
 /* =Responsive
 -------------------------------------------------------------- */
 @media (min-width: 900px) {
   body {
     font-size: 120%; } }
+@media (min-width: 1000px) {
+  body {
+    font-size: 130%; } }
+@media (min-width: 1100px) {
+  body {
+    font-size: 145%; } }
+@media (min-width: 1200px) {
+  body {
+    font-size: 160%; } }
+@media (min-width: 1300px) {
+  body {
+    font-size: 180%; } }
+@media (max-width: 750px) {
+  #site-header {
+    width: 100%;
+    min-height: auto;
+    padding: 0; }
+    #site-header .hgroup {
+      width: 88%;
+      padding: 0 6%;
+      min-height: 0;
+      overflow: visible; }
+    #site-header h1 {
+      width: 100%;
+      margin: 1em 0 0 2%; }
+    #site-header h2 {
+      width: 100%;
+      margin: 1em 0; }
+    #site-header img {
+      display: none; }
+
+  #nav {
+    float: left;
+    position: relative; }
+    #nav div {
+      width: 100%;
+      padding: 0; }
+    #nav li {
+      width: 100%; }
+      #nav li ul {
+        display: none; } }
 @media (max-width: 650px) {
   #site-content {
     width: 94%;

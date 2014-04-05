@@ -4,15 +4,16 @@
  * 
  * Code developed from the excellent Genesis theme by StudioPress (http://studiopress.com/)
  *
- * @package Hellish Simplicity
- * @since Hellish Simplicity 1.1
+ * @package PixoPoint
+ * @since PixoPoint 1.1
  */
 ?>
 
-<ul id="numeric-pagination">
 <?php
 
 if ( !is_singular() ) { // do nothing
+
+	echo '<ul id="numeric-pagination">';
 
 	global $wp_query;
 	
@@ -36,7 +37,7 @@ if ( !is_singular() ) { // do nothing
 	
 	//	Previous Post Link
 	if ( get_previous_posts_link() )
-		printf( '<li>%s</li>' . "\n", get_previous_posts_link( __( '&laquo; Previous', 'hellish') ) );
+		printf( '<li>%s</li>' . "\n", get_previous_posts_link( __( '&laquo; Previous', 'pixopoint') ) );
 	
 	//	Link to first Page, plus ellipeses, if necessary
 	if ( !in_array( 1, $links ) ) {
@@ -70,7 +71,7 @@ if ( !is_singular() ) { // do nothing
 	//	Link to last Page, plus ellipses, if necessary
 	if ( !in_array( $max, $links ) ) {
 		if ( !in_array( $max - 1, $links ) )
-			echo '<li>&hellip;</li>' . "\n";
+			echo '<li class="extra-pages">&hellip;</li>' . "\n";
 		
 		$current = ( $paged == $max ) ? 'class="active"' : '';
 		printf(
@@ -85,10 +86,9 @@ if ( !is_singular() ) { // do nothing
 	if ( get_next_posts_link() ) {
 		printf(
 			'<li>%s</li>' . "\n",
-			get_next_posts_link( __( 'Next &raquo;', 'hellish' ) ) );
+			get_next_posts_link( __( 'Next &raquo;', 'pixopoint' ) ) );
 	}
+
+	echo '</ul>';
+
 }
-
-?>
-
-</ul>

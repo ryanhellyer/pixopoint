@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Hellish Simplicity\n"
+"Project-Id-Version: PixoPoint\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-08-18 12:04+0100\n"
 "PO-Revision-Date: 2013-08-18 12:09+0100\n"

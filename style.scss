@@ -5,9 +5,9 @@ This is the original SASS build code for the CSS used in the theme.
 */
 
 
-$max_header_width: 1110px;
+$max_header_width: 1310px;
 $max_header_height: 232px;
-$max_page_width: 1240px;
+$max_page_width: 1440px;
 $border: 1px solid #ddd;
 $small-text: 0.8em;
 $red_colour: #74ad10;
@@ -18,7 +18,7 @@ $font_small_size: 0.8em;
 $font_sans_serif: sans-serif;
 $font_serif: serif;
 
-@mixin rounded_corners($radius: 6px) {
+@mixin rounded_corners($radius: 0.6em) {
 	border-radius: $radius;
 	-moz-border-radius: $radius;
 	-webkit-border-radius: $radius;
@@ -76,8 +76,7 @@ a:hover {
 	position: relative;
 	width: 88%;
 	padding: 0 6%;
-	height: $max_header_height;
-	overflow: auto;
+	min-height: $max_header_height;
 	background-image: linear-gradient(
 		to bottom,
 		#fff 40%,
@@ -87,7 +86,7 @@ a:hover {
 	.hgroup {
 		margin: 0 auto;
 		max-width: $max_header_width;
-		height: $max_header_height;
+		min-height: $max_header_height;
 		overflow: hidden;
 		position: relative;
 	}
@@ -100,7 +99,7 @@ a:hover {
 		font-size: 2.1em;
 		line-height: 1.1em;
 		font-weight: normal;
-		margin: 53px 0 0 2%;
+		margin: 1em 0 1.8em 2%;
 
 		a {
 			color: #aaa;
@@ -124,18 +123,20 @@ a:hover {
 	}
 
 	h2 {
+		float: right;
+		width: 30%;
 		font-family: $font_sans_serif;
 		font-size: $font_standard_size;
 		line-height: 1.2em;
-		float: right;
 		font-weight: normal;
-		margin: 3em 33% 0 2%;
+		margin: 3em 24% 0 2%;
 		color: #999;
 	}
 
 	img {
 		width: auto;
 		height: 227px;
+		height: 10em;
 		position: absolute;
 		right: 6%;
 		bottom: 0;
@@ -158,7 +159,7 @@ a:hover {
 		width: 94%;
 		padding: 0 3%;
 		border-bottom: 1px solid #85cc0b;
-		overflow: auto;
+		overflow: visible;
 	}
 
 	ul {
@@ -169,6 +170,7 @@ a:hover {
 
 	li {
 		float: left;
+		position: relative;
 		list-style: none;
 
 		&:first-child a {
@@ -184,7 +186,6 @@ a:hover {
 			float: left;
 			list-style: none;
 			background-image: linear-gradient(#90cb29, #86b82e);
-			border-bottom: 1px solid #94d22a;
 
 			a {
 				text-decoration: none;
@@ -195,12 +196,71 @@ a:hover {
 			background: url(images/menu-dot-hover.png) 90% 50% no-repeat;
 		}
 
+		ul {
+			position: absolute;
+			left: -999em;
+		}
+
+		&:hover {
+
+			> ul {
+				left: 0;
+				width: 10em;
+				background-image: linear-gradient(#86b82e, #75a71d);
+				padding-bottom: 0.5em;
+				-moz-border-radius-bottomright: 0.6em;
+				-moz-border-radius-bottomleft: 0.6em;
+				border-bottom-right-radius: 0.6em;
+				border-bottom-left-radius: 0.6em;
+				-moz-box-shadow: 1px 1px 1em rgba(0,0,0,0.5);
+				box-shadow: 0 0.3em 0.4em rgba(0,0,0,0.5);
+
+				li {
+					width: 100%;
+					font-size: 0.8em;
+					line-height: 1.1em;
+
+					a {
+						border-left: 1px solid #a5d256;
+					}
+
+					ul {
+						top: -0.5em;
+						left: -999em;
+						padding-top: 0.5em;
+						-moz-border-radius-topright: 0.6em;
+						-moz-border-radius-topleft: 0.6em;
+						border-top-right-radius: 0.6em;
+						border-top-left-radius: 0.6em;
+					}
+
+					&:hover {
+
+						li {
+							font-size: 1em;
+						}
+
+						ul {
+							left: 12.4em;
+
+							ul {
+								left: 10em;
+							}
+
+						}
+
+					}
+				}
+			}
+
+		}
+
 	}
 
 	a {
 		display: block;
-		padding: 0.4em 50px 0.4em 30px;
-		font-size: 18px;
+		padding: 0.4em 2.7em 0.4em 1.3em;
+		font-size: 1em;
 		color: #fff;
 		text-shadow: 1px 1px 1px rgba(46,75,8,0.3);
 		border-right: 1px solid #59a50a;
@@ -224,6 +284,10 @@ body.page-template-full-width-php #site-content {
 	font-family: $font_sans_serif;
 	line-height: 1.8em;
 	color: #333;
+	-moz-border-radius-bottomright: 0.6em;
+	-moz-border-radius-bottomleft: 0.6em;
+	border-bottom-right-radius: 0.6em;
+	border-bottom-left-radius: 0.6em;
 }
 
 h1,
@@ -370,9 +434,15 @@ blockquote p {
 code,
 pre {
 	max-width: 100%;
-	overflow: auto;
 	font-family: monospace;
 	font-size: $font_reduced_size;
+}
+
+pre {
+	padding: 0.7em 1.2em;
+	background: #eee;
+	border: 1px solid #ddd;
+	line-height: 1em;
 }
 
 input[type=text] {
@@ -414,17 +484,17 @@ body .wp-caption {
 	margin: 1em auto;
 	padding: 2% 2% 0 2%;
 	border: $border;
-	-webkit-border-radius: 6px;
-	-moz-border-radius: 6px;
-	-ms-border-radius: 6px;
-	-o-border-radius: 6px;
-	border-radius: 6px;
+	-webkit-border-radius: 0.6em;
+	-moz-border-radius: 0.6em;
+	-ms-border-radius: 0.6em;
+	-o-border-radius: 0.6em;
+	border-radius: 0.6em;
 }
 
 .wp-caption p {
 	margin: 0.4em 0;
 	padding: 0 0.8em;
-	font-size: 0.8em;
+	font-size: 0.7em;
 	line-height: 1.5em;
 	color: #666;
 }
@@ -459,18 +529,18 @@ article {
 .attachment-excerpt-thumb {
 	float: right;
 	max-width: 38%;
-	margin: 0 0 1em 2em;
+	margin: 1em 0 1em 2em;
 }
 
 .entry-meta {
 	color: #999;
 	font-family: $font_sans_serif;
-	font-size: 0.6em;
+	font-size: 0.8em;
 	line-height: 1em;
 	padding: 1.5em 2em;
 	border-top: 1px solid #eee;
 	border-bottom: 1px dotted #e5e5e5;
-	background-image: linear-gradient(#f9f9f9, #fff);
+	background-image: linear-gradient(to bottom, #f9f9f9 0%, #fff 40%);
 }
 
 .alignleft {
@@ -524,6 +594,7 @@ td {
 -------------------------------------------------------------- */
 
 #main {
+	clear: both; /* Used at smaller browser widths for clearing #nav */
 	margin: 0 auto;
 	max-width: $max_page_width;
 }
@@ -569,8 +640,8 @@ td {
 		background: #f9f9f9;
 		margin: 0 0 1.7em 0;
 		padding: 0.4em 9%;
-		-moz-border-radius: 3%;
-		border-radius: 3%;
+		-moz-border-radius: 0.6em;
+		border-radius: 0.6em;
 
 		p {
 			margin: 0; /* Hack to fix bug in sidebar */
@@ -595,21 +666,27 @@ td {
 	padding: 0 0 4em 0;
 
 	li {
+		font-size: 0.8em;
 		float: left;
 		list-style: none;
 		margin: 0 0.3em;
 		padding: 0;
-		height: 1.6em;
-		line-height: 1.6em;
+		height: 1.4em;
+		line-height: 1.4em;
 		text-align: center;
 		border: $border;
+
+		&.extra-pages {
+			border: none;
+		}
+
 	}
 
 	a {
 		float: left;
-		height: 1.3em;
+		height: 1.1em;
 		margin: 0;
-		padding: 0.1em 0.5em 0.2em 0.5em;
+		padding: 0.05em 0.5em 0.25em 0.5em;
 	}
 	
 	li.active a,
@@ -625,11 +702,11 @@ td {
 -------------------------------------------------------------- */
 #comments {
 
-	margin: 3em 0 0 0;
+	margin: 1em 0 0 0;
 	overflow: auto;
 
 	h3 {
-		margin: 0 0 20px;
+		margin: 0;
 	}
 
 }
@@ -828,7 +905,7 @@ ol.commentlist {
 -------------------------------------------------------------- */
 
 .metro-tabs a {
-	height: 16px;
+	height: 10.6em;
 }
 
 #respond .subscribe-to-comments label {
@@ -841,15 +918,36 @@ ol.commentlist {
 #site-footer {
 	clear: both;
 	margin: 0 auto;
-	max-width: $max_header_width;
+	max-width: $max_page_width;
 	text-align: center;
 	font-family: $font_sans_serif;
 	font-size: $font_standard_size;
 }
 
 #site-info {
-	border-top: $border;
+	margin: 0 3%;
+	text-indent: 2.5em;
+	text-align: left;
 	padding: 1.6em 0;
+	color: #777;
+	font-size: 0.9em;
+}
+.footer-blocks {
+	float: left;
+	width: 100%;
+	margin: 1.5em 0 1.1em 0;
+
+	div {
+		float: left;
+		width: 9%;
+		margin: 0 0.5%;
+		height: 5px;
+		background: #ddd;
+		border-bottom: 1px solid #cbcbcb;
+		-moz-border-radius: 2px;
+		border-radius: 2px;
+	}
+
 }
 
 /* =Responsive
@@ -859,6 +957,90 @@ ol.commentlist {
 
 	body {
 		font-size: 120%;
+	}
+
+}
+
+@media ( min-width: 1000px ) {
+
+	body {
+		font-size: 130%;
+	}
+
+}
+
+@media ( min-width: 1100px ) {
+
+	body {
+		font-size: 145%;
+	}
+
+}
+
+@media ( min-width: 1200px ) {
+
+	body {
+		font-size: 160%;
+	}
+
+}
+
+@media ( min-width: 1300px ) {
+
+	body {
+		font-size: 180%;
+	}
+
+}
+
+@media ( max-width: 750px ) {
+
+	#site-header {
+		width: 100%;
+		min-height: auto;
+		padding: 0;
+
+		.hgroup {
+			width: 88%;
+			padding: 0 6%;
+			min-height: 0;
+			overflow: visible;
+		}
+
+		h1 {
+			width: 100%;
+			margin: 1em 0 0 2%;
+		}
+
+		h2 {
+			width: 100%;
+			margin: 1em 0;
+		}
+
+		img {
+			display: none;
+		}
+
+	}
+
+	#nav {
+		float: left;
+		position: relative;
+
+		div {
+			width: 100%;
+			padding: 0;
+		}
+
+		li {
+			width: 100%;
+
+			ul {
+				display: none;
+			}
+
+		}
+
 	}
 
 }

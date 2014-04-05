@@ -4,8 +4,8 @@
  *
  * Displays all of the <head> section and everything up till <div id="main">
  *
- * @package Hellish Simplicity
- * @since Hellish Simplicity 1.1
+ * @package PixoPoint
+ * @since PixoPoint 1.1
  */
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -23,6 +23,7 @@
 <body <?php body_class(); ?>>
 
 <header id="site-header" role="banner">
+
 	<div class="hgroup">
 		<h1>
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
@@ -38,7 +39,15 @@
 			</a>
 		</h1>
 		<h2><?php bloginfo( 'description' ); ?></h2>
+		<img src="<?php echo get_template_directory_uri(); ?>/images/ryan-cut-small.png" />
 	</div><!-- .hgroup -->
+
+	<nav id="nav">
+		<div>
+			<?php wp_nav_menu(); ?>
+		</div>
+	</nav><!-- #nav -->
+
 </header><!-- #masthead -->
 
 <div id="main" class="site-main">

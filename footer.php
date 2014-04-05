@@ -4,8 +4,8 @@
  *
  * Contains the closing of the id=main div and all content after
  *
- * @package Hellish Simplicity
- * @since Hellish Simplicity 1.1
+ * @package PixoPoint
+ * @since PixoPoint 1.1
  */
 ?>
 
@@ -13,8 +13,21 @@
 
 <footer id="site-footer" role="contentinfo">
 	<div id="site-info">
-		<?php _e( 'Copyright', 'hellish' ); ?> &copy; <?php bloginfo( 'name' ); ?> <?php echo date( 'Y' ); ?>. 
-		<?php _e( 'WordPress theme by', 'hellish' ); ?> <a href="http://geek.ryanhellyer.net/" title="Ryan Hellyer">Ryan Hellyer</a>.
+		<?php _e( 'Copyright', 'pixopoint' ); ?> &copy; <?php bloginfo( 'name' ); ?> <?php echo date( 'Y' ); ?>. 
+		<?php _e( 'WordPress theme by', 'pixopoint' ); ?> <a href="http://geek.ryanhellyer.net/" title="<?php _e( 'Ryan Hellyer and Tung Do', 'pixopoint' ); ?>"><?php _e( 'Ryan & Tung', 'pixopoint' ); ?></a>.
+
+		<div class="footer-blocks">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
 	</div><!-- #site-info -->
 </footer><!-- #colophon .site-footer -->
 

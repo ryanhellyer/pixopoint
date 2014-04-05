@@ -2,8 +2,8 @@
 /**
  * The Sidebar containing the main widget areas.
  *
- * @package Hellish Simplicity
- * @since Hellish Simplicity 1.1
+ * @package PixoPoint
+ * @since PixoPoint 1.1
  */
 ?>
 <div id="sidebar" role="complementary"><?php
@@ -19,13 +19,13 @@
 		?></ul>
 	</aside>
 	<aside>
-		<h1 class="widget-title"><?php _e( 'Archives', 'hellish' ); ?></h1>
+		<h1 class="widget-title"><?php _e( 'Archives', 'pixopoint' ); ?></h1>
 		<ul>
 			<?php wp_get_archives( 'type=monthly' ); ?>
 		</ul>
 	<aside>
 	<aside>
-		<h1 class="widget-title"><?php _e( 'Search', 'hellish' ); ?></h1>
+		<h1 class="widget-title"><?php _e( 'Search', 'pixopoint' ); ?></h1>
 		<?php get_search_form(); ?>
 	</aside><?php
 	}

@@ -2,8 +2,8 @@
 /**
  * The main template file.
  *
- * @package Hellish Simplicity
- * @since Hellish Simplicity 1.1
+ * @package PixoPoint
+ * @since PixoPoint 1.1
  */
 
 get_header(); ?>
@@ -14,7 +14,7 @@ get_header(); ?>
 // If on search page, then display what we searched for
 if ( is_search() ) { ?>
 		<h1 class="page-title">
-			<?php printf( __( 'Search Results for: "%s" ...', 'hellish' ), get_search_query() ); ?>
+			<?php printf( __( 'Search Results for: "%s" ...', 'pixopoint' ), get_search_query() ); ?>
 		</h1><?php
 }
 
@@ -29,7 +29,31 @@ if ( have_posts() ) {
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 			<header class="entry-header">
-				<h1 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'hellish' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
+				<h1 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'pixopoint' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
+
+				<?php
+				// Don't display meta information on static pages
+				if ( ! is_page() ) { ?>
+				<div class="entry-meta">
+					<?php
+					printf(
+						__( 'Posted on <a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a><span class="byline"> by <span class="author vcard"><a class="url fn n" href="%5$s" title="%6$s" rel="author">%7$s</a></span></span>', 'pixopoint' ),
+						esc_url( get_permalink() ),
+						esc_attr( get_the_time() ),
+						esc_attr( get_the_date( 'c' ) ),
+						esc_html( get_the_date() ),
+						esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
+						esc_attr( sprintf( __( 'View all posts by %s', 'pixopoint' ), get_the_author() ) ),
+						get_the_author()
+					);
+
+					// Edit link
+					edit_post_link( __( 'Edit', 'pixopoint' ), '<span class="sep"> | </span><span class="edit-link">', '</span>' );
+					?>
+				</div><!-- .entry-meta --><?php
+				}
+				?>
+
 			</header><!-- .entry-header -->
 		
 			<div class="entry-content"><?php
@@ -38,8 +62,8 @@ if ( have_posts() ) {
 				 * Display full content for home page and single post pages
 				 */
 				if ( is_home() || is_single() || is_page() ) {
-					the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'hellish' ) );
-					wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'hellish' ), 'after' => '</div>' ) );
+					the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'pixopoint' ) );
+					wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'pixopoint' ), 'after' => '</div>' ) );
 				} else {
 					// Use the built in thumbnail system, otherwise attempt to display the latest attachment
 					if ( has_post_thumbnail() ) {
@@ -50,53 +74,48 @@ if ( have_posts() ) {
 					the_excerpt();
 				}
 				?>
-			</div><!-- .entry-content --><?php
+			</div><!-- .entry-content -->
 
+			<?php
 			// Don't display meta information on static pages
 			if ( ! is_page() ) { ?>
 			<footer class="entry-meta">
 				<?php
-				printf(
-					__( 'Posted on <a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a><span class="byline"> by <span class="author vcard"><a class="url fn n" href="%5$s" title="%6$s" rel="author">%7$s</a></span></span>', 'hellish' ),
-					esc_url( get_permalink() ),
-					esc_attr( get_the_time() ),
-					esc_attr( get_the_date( 'c' ) ),
-					esc_html( get_the_date() ),
-					esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
-					esc_attr( sprintf( __( 'View all posts by %s', 'hellish' ), get_the_author() ) ),
-					get_the_author()
-				);
 
 				// Category listings
-				$categories_list = get_the_category_list( __( ', ', 'hellish' ) );
+				$categories_list = get_the_category_list( __( ', ', 'pixopoint' ) );
 				if ( $categories_list ) {
 				?>
 				<span class="cat-links">
-					<?php printf( __( ' in %1$s', 'hellish' ), $categories_list ); ?>
+					<?php printf( __( 'Posted in %1$s', 'pixopoint' ), $categories_list ); ?>
 				</span><?php
 				}
 
 				// Tag listings
-				$tags_list = get_the_tag_list( '', __( ', ', 'hellish' ) );
+				$tags_list = get_the_tag_list( '', __( ', ', 'pixopoint' ) );
 				if ( $tags_list ) {
 				?>
 				<span class="sep"> | </span>
 				<span class="tags-links">
-					<?php printf( __( 'Tagged %1$s', 'hellish' ), $tags_list ); ?>
+					<?php printf( __( 'Tagged %1$s', 'pixopoint' ), $tags_list ); ?>
 				</span><?php
 				}
 
 				// Comments info.
 				if ( ! post_password_required() && ( comments_open() || '0' != get_comments_number() ) ) { ?>
 				<span class="sep"> | </span>
-				<span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'hellish' ), __( '1 Comment', 'hellish' ), __( '% Comments', 'hellish' ) ); ?></span><?php
+				<span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'pixopoint' ), __( '1 Comment', 'pixopoint' ), __( '% Comments', 'pixopoint' ) ); ?></span><?php
 				}
 
 				// Edit link
-				edit_post_link( __( 'Edit', 'hellish' ), '<span class="sep"> | </span><span class="edit-link">', '</span>' );
+				edit_post_link( __( 'Edit', 'pixopoint' ), '<span class="sep"> | </span><span class="edit-link">', '</span>' );
 				?>
 			</footer><!-- .entry-meta --><?php
-			} ?>
+			} else {
+				// Display edit link on static pages
+				edit_post_link( __( 'Edit', 'pixopoint' ), '<footer class="entry-meta"><span class="edit-link">', '</span></footer>' );
+			}
+			?>
 
 		</article><!-- #post-<?php the_ID(); ?> --><?php
 

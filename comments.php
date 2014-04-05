@@ -2,8 +2,8 @@
 /**
  * Template for displaying Comments.
  *
- * @package Hellish Simplicity
- * @since Hellish Simplicity 1.1
+ * @package PixoPoint
+ * @since PixoPoint 1.1
  */
 
  
@@ -14,9 +14,9 @@ function hellish_comments_navigation( $id = '' ) {
 	if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) {
 		?>
 	<nav role="navigation" id="<?php echo $id; ?>" class="site-navigation comment-navigation">
-		<h1 class="assistive-text"><?php _e( 'Comment navigation', 'hellish' ); ?></h1>
-		<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'hellish' ) ); ?></div>
-		<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'hellish' ) ); ?></div>
+		<h1 class="assistive-text"><?php _e( 'Comment navigation', 'pixopoint' ); ?></h1>
+		<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'pixopoint' ) ); ?></div>
+		<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'pixopoint' ) ); ?></div>
 	</nav><!-- #comment-nav-<?php echo $id; ?> .site-navigation .comment-navigation --><?php
 	}
 }
@@ -44,7 +44,7 @@ if ( have_comments() ) { ?>
 				'%1$s thoughts on &ldquo;%2$s&rdquo;',
 				get_comments_number(),
 				'comments title',
-				'hellish'
+				'pixopoint'
 			),
 			number_format_i18n( get_comments_number() ),
 			'<span>' . get_the_title() . '</span>'
@@ -69,7 +69,7 @@ if (
 	'0' != get_comments_number() &&
 	post_type_supports( get_post_type(), 'comments' )
 ) {
-	echo '<p class="nocomments">' . __( 'Comments are closed.', 'hellish' ) . '</p>';
+	echo '<p class="nocomments">' . __( 'Comments are closed.', 'pixopoint' ) . '</p>';
 }
 
 /*
