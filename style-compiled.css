@@ -531,6 +531,8 @@ td {
     border: 1px solid #dddddd; }
     #numeric-pagination li.extra-pages {
       border: none; }
+    #numeric-pagination li:first-child, #numeric-pagination li:last-child {
+      border: none; }
   #numeric-pagination a {
     float: left;
     height: 1.1em;

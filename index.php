@@ -58,6 +58,32 @@ if ( have_posts() ) {
 						get_the_author()
 					);
 
+					// Category listings
+					$categories_list = get_the_category_list( __( ', ', 'pixopoint' ) );
+					if ( $categories_list ) {
+
+						// If there is only one category, then don't bother showing it
+						$categories = get_categories();
+						if ( 1 < count( $categories ) ) {
+
+						?>
+						<span class="cat-links">
+							<?php printf( __( ' in %1$s', 'pixopoint' ), $categories_list ); ?>
+						</span><?php
+						}
+					}
+
+
+					// Tag listings
+					$tags_list = get_the_tag_list( '', __( ', ', 'pixopoint' ) );
+					if ( $tags_list ) {
+						?>
+						<span class="sep"> | </span>
+						<span class="tags-links">
+							<?php printf( __( 'Tagged %1$s', 'pixopoint' ), $tags_list ); ?>
+						</span><?php
+					}
+
 					// Edit link
 					edit_post_link( __( 'Edit', 'pixopoint' ), '<span class="sep"> | </span><span class="edit-link">', '</span>' );
 					?>
@@ -80,41 +106,6 @@ if ( have_posts() ) {
 				}
 				?>
 			</div><!-- .entry-content -->
-
-			<?php
-			// Don't display meta information on static pages
-			if ( is_singular() && ! is_page() ) { ?>
-			<footer class="entry-meta">
-				<?php
-
-				// Category listings
-				$categories_list = get_the_category_list( __( ', ', 'pixopoint' ) );
-				if ( $categories_list ) {
-				?>
-				<span class="cat-links">
-					<?php printf( __( 'Posted in %1$s', 'pixopoint' ), $categories_list ); ?>
-				</span><?php
-				}
-
-				// Tag listings
-				$tags_list = get_the_tag_list( '', __( ', ', 'pixopoint' ) );
-				if ( $tags_list ) {
-				?>
-				<span class="sep"> | </span>
-				<span class="tags-links">
-					<?php printf( __( 'Tagged %1$s', 'pixopoint' ), $tags_list ); ?>
-				</span><?php
-				}
-
-				// Comments info.
-				if ( ! post_password_required() && ( comments_open() || '0' != get_comments_number() ) ) { ?>
-				<span class="sep"> | </span>
-				<span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'pixopoint' ), __( '1 Comment', 'pixopoint' ), __( '% Comments', 'pixopoint' ) ); ?></span><?php
-				}
-				?>
-			</footer><!-- .entry-meta --><?php
-			}
-			?>
 
 		</article><!-- #post-<?php the_ID(); ?> --><?php
 

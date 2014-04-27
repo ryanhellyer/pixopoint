@@ -716,6 +716,11 @@ td {
 			border: none;
 		}
 
+		&:first-child,
+		&:last-child {
+			border: none;
+		}
+
 	}
 
 	a {
