@@ -13,11 +13,11 @@
 function hellish_comments_navigation( $id = '' ) {
 	if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) {
 		?>
-	<nav role="navigation" id="<?php echo $id; ?>" class="site-navigation comment-navigation">
+	<nav role="navigation" id="comment-nav-<?php echo esc_attr( $id ); ?>" class="site-navigation comment-navigation">
 		<h1 class="assistive-text"><?php _e( 'Comment navigation', 'pixopoint' ); ?></h1>
 		<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'pixopoint' ) ); ?></div>
 		<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'pixopoint' ) ); ?></div>
-	</nav><!-- #comment-nav-<?php echo $id; ?> .site-navigation .comment-navigation --><?php
+	</nav><!-- #comment-nav-<?php echo esc_attr( $id ); ?> --><?php
 	}
 }
 
@@ -37,7 +37,7 @@ if ( post_password_required() )
  * Display the comments if any exist
  */
 if ( have_comments() ) { ?>
-	<h2 class="comments-title"><?php
+	<h3 class="comments-title"><?php
 		printf(
 			_nx(
 				'One thought on &ldquo;%2$s&rdquo;',
@@ -49,12 +49,12 @@ if ( have_comments() ) { ?>
 			number_format_i18n( get_comments_number() ),
 			'<span>' . get_the_title() . '</span>'
 		);
-	?></h2><?php
+	?></h3><?php
 
 	hellish_comments_navigation( 'comment-nav-above' );
 	?>
 
-	<ol class="commentlist"><?php wp_list_comments(); ?></ol><!-- .commentlist -->
+	<ol class="commentlist"><?php wp_list_comments( array( 'avatar_size' => '120' ) ); ?></ol><!-- .commentlist -->
 
 	<?php
 	hellish_comments_navigation( 'comment-nav-below' );
@@ -75,7 +75,7 @@ if (
 /*
  * Display the main comment form
  */
-comment_form();
+comment_form( array( 'comment_notes_after' => ' ' ) );
 
 ?>
 

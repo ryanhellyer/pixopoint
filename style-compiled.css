@@ -87,8 +87,7 @@ a:hover {
     color: #999; }
   #site-header img {
     width: auto;
-    height: 227px;
-    height: 10em;
+    height: 11.5em;
     position: absolute;
     right: 6%;
     bottom: 0;
@@ -211,7 +210,7 @@ h1.widget-title {
   font-weight: bold; }
 
 h1.entry-title {
-  margin: 1.8em 3% 0.8em 3%; }
+  margin: 1.8em 3% 0.8em 3.7%; }
 
 h1 {
   font-size: 1.3em;
@@ -316,7 +315,8 @@ pre {
   padding: 0.7em 1.2em;
   background: #eee;
   border: 1px solid #ddd;
-  line-height: 1em; }
+  line-height: 1em;
+  overflow-x: auto; }
 
 input[type=text] {
   border: 1px solid #dddddd;
@@ -376,25 +376,19 @@ body .wp-caption {
 article {
   margin: 0 0 2em 0;
   padding: 0 0 2em 0;
-  border-bottom: 1px solid #dddddd; }
+  border-bottom: 1px #e5e5e5 dotted; }
 
 .entry-content {
   width: auto;
   overflow: auto;
   padding: 0 3% 0 3.7%; }
 
-.thumbnail,
-.attachment-excerpt-thumb {
-  float: right;
-  max-width: 38%;
-  margin: 1em 0 1em 2em; }
-
 .entry-meta {
   color: #999;
   font-family: sans-serif;
-  font-size: 0.8em;
+  font-size: 0.7em;
   line-height: 1em;
-  padding: 1.5em 2em;
+  padding: 1em 1.5em;
   border-top: 1px solid #eee;
   border-bottom: 1px dotted #e5e5e5;
   background-image: linear-gradient(to bottom, #f9f9f9 0%, white 40%); }
@@ -437,6 +431,38 @@ th {
 td {
   border-top: 1px solid #ededed;
   padding: 1em 1em 1em 0; }
+
+/* =Home and Archive templates
+-------------------------------------------------------------- */
+.home article {
+  float: left;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0; }
+
+.home h1.entry-title {
+  margin-left: 5%; }
+
+.home .entry-header,
+.home .entry-content {
+  float: right; }
+
+.home .entry-header {
+  width: 70%; }
+
+.home .entry-content {
+  width: 67%;
+  padding: 0 0 0 0; }
+
+.home footer.entry-meta {
+  float: left; }
+
+.thumbnail,
+.attachment-excerpt-thumb {
+  float: left;
+  max-width: 18%;
+  margin: 2.1em 0 1em 1.2em;
+  border: 10px solid #ededed; }
 
 /* =Sidebar
 -------------------------------------------------------------- */
@@ -490,8 +516,9 @@ td {
 /* =Numeric pagination
 -------------------------------------------------------------- */
 #numeric-pagination {
-  margin: 4em 0 0 0;
-  padding: 0 0 4em 0; }
+  float: left;
+  margin: 2em 0 0 0;
+  padding: 0 0 2em 0; }
   #numeric-pagination li {
     font-size: 0.8em;
     float: left;
@@ -520,9 +547,19 @@ td {
 #comments {
   margin: 1em 0 0 0;
   overflow: auto; }
-  #comments h3 {
-    margin: 0; }
 
+#comments h3,
+#respond h3 {
+  margin: 1.2em 0 1em 0;
+  font-size: 1em;
+  color: #555; }
+
+/* Dotted line pattern */
+#respond h3,
+#comments {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAAGCAYAAADpJ08yAAAAGElEQVQIW2M8c+bMfxMTE0ZGBihgJEIEAIumDAfF39KVAAAAAElFTkSuQmCC) repeat-x; }
+
+/* Comment list */
 ol.commentlist {
   margin: 0;
   padding: 0;
@@ -531,8 +568,8 @@ ol.commentlist {
   ol.commentlist li.pingback,
   ol.commentlist li.comment {
     list-style: none;
-    background: #fafafa;
-    border: 1px solid #dddddd;
+    background: rgba(0, 0, 0, 0.015);
+    border: 1px solid rgba(0, 0, 0, 0.05);
     margin: 0 0 1.5em 0;
     padding: 0;
     border-radius: 0.6em;
@@ -548,19 +585,24 @@ ol.commentlist {
   ol.commentlist li.trackback .comment-body,
   ol.commentlist li.pingback .comment-body,
   ol.commentlist li.comment .comment-body {
-    padding: 1.5em; }
+    padding: 1.5em 1.5em 1.5em 25%; }
+  ol.commentlist .comment-body p {
+    margin-top: 0.4em;
+    padding: 1em 1.5em 0 1.5em;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    background-image: linear-gradient(to top, transparent 80%, rgba(0, 0, 0, 0.03) 100%); }
   ol.commentlist li.comment li.comment {
     font-size: 1em;
-    background: #f6f6f6;
     margin: 1.5em 0 0 0; }
-  ol.commentlist li.comment li.comment li.comment {
-    background: #f3f3f3; }
   ol.commentlist cite {
-    font-style: normal; }
+    font-style: normal;
+    padding-left: 1.5em; }
   ol.commentlist img.avatar {
-    float: right;
-    border: 1px solid #dddddd;
-    margin: 0 0 1.5em 1.5em; }
+    width: 20%;
+    float: left;
+    border: 5px solid #ededed;
+    margin: 0 0 1.5em -29%;
+    position: relative; }
   ol.commentlist .comment-reply-link {
     background: #eee;
     border-radius: 0.6em;
@@ -580,7 +622,11 @@ ol.commentlist {
   line-height: 1.5em; }
 
 .comment-meta {
-  font-size: 0.8em; }
+  font-size: 0.7em;
+  padding: 0 1.5em 0 1.5em; }
+
+.reply {
+  padding-left: 1.5em; }
 
 /* =Response
 -------------------------------------------------------------- */
@@ -589,6 +635,34 @@ ol.commentlist {
 #respond {
   margin: 3em 0 2em 0;
   overflow: auto; }
+
+#respond {
+  padding: 1em;
+  background: #fafafa;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 0.6em;
+  -moz-border-radius: 0.6em;
+  -webkit-border-radius: 0.6em; }
+  #respond h3 {
+    margin: 0;
+    padding: 0 0 0.8em 0;
+    background-position: bottom left; }
+  #respond .comment-notes {
+    margin: 1em 0 0 0;
+    padding: 0;
+    font-size: 0.8em; }
+  #respond .comment-form label {
+    float: left;
+    width: 16%;
+    margin: 0;
+    padding: 0; }
+  #respond .comment-form input[type=text] {
+    width: 30%; }
+  #respond .comment-form input[type=text],
+  #respond .comment-form textarea {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 0%, white 0.3em); }
+  #respond .comment-form p {
+    padding: 0; }
 
 .comment #respond {
   margin: 3em 1.5em 2em 1.5em; }
@@ -728,18 +802,57 @@ ol.commentlist {
 @media (min-width: 900px) {
   body {
     font-size: 120%; } }
-@media (min-width: 1000px) {
-  body {
-    font-size: 130%; } }
-@media (min-width: 1100px) {
-  body {
-    font-size: 145%; } }
-@media (min-width: 1200px) {
-  body {
-    font-size: 160%; } }
-@media (min-width: 1300px) {
-  body {
-    font-size: 180%; } }
+/*
+@media ( min-width: 1000px ) {
+
+	body {
+		font-size: 220%;
+	}
+
+}
+
+@media ( min-width: 1100px ) {
+
+	body {
+		font-size: 145%;
+	}
+
+	#site-header {
+
+		h1 {
+			width: 100%;
+			margin: 1em 0 0 2%;
+		}
+
+		h2 {
+			width: 100%;
+			margin: 1em 0;
+		}
+
+		img {
+			display: none;
+		}
+
+	}
+
+}
+
+@media ( min-width: 1200px ) {
+
+	body {
+		font-size: 160%;
+	}
+
+}
+
+@media ( min-width: 1300px ) {
+
+	body {
+		font-size: 180%;
+	}
+
+}
+*/
 @media (max-width: 750px) {
   #site-header {
     width: 100%;

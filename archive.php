@@ -26,18 +26,41 @@ if ( have_posts() ) {
 		the_post();
 		?>
 
-		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>><?php
-
-			// Display post thumbnails when not on singular posts
-			if ( ! is_singular() ) {
-				// Use the built in thumbnail system, otherwise attempt to display the latest attachment
-				if ( has_post_thumbnail() ) {
-					the_post_thumbnail( 'excerpt-thumb' );
-				} elseif ( function_exists( 'get_the_image' ) ) {
-					get_the_image( array( 'size' => 'thumbnail' ) );
-				}
-			}
-			?>
+		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<style>
+#site-content {
+	padding: 2em 0 0 3.7%;
+}
+article {
+	margin: 0 0 1em 0;
+	padding: 0 0 1em 0;
+}
+.entry-header {
+	margin-left: 30%;
+}
+h1.entry-title {
+	margin-top: 0;
+	padding-left: 2%;
+}
+.entry-meta {
+	
+}
+.entry-content {
+	width: 63%;
+	margin-left: 40%;
+}
+p {
+	margin: 1em 0 0 0;
+}
+.thumbnail {
+	float: left;
+	width: 18%;
+	height: auto;
+	margin: 0 0 0 4%;
+	border: 0.5em #eee solid;
+}
+</style>
+			<img class="thumbnail" src="http://uploads.ryanhellyer.net/geek/2014/03/fs.png" />
 
 			<header class="entry-header">
 				<h1 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'pixopoint' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
@@ -72,10 +95,16 @@ if ( have_posts() ) {
 				/*
 				 * Display full content for home page and single post pages
 				 */
-				if ( is_singular() ) {
+				if ( is_home() || is_single() || is_page() ) {
 					the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'pixopoint' ) );
 					wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'pixopoint' ), 'after' => '</div>' ) );
 				} else {
+					// Use the built in thumbnail system, otherwise attempt to display the latest attachment
+					if ( has_post_thumbnail() ) {
+						the_post_thumbnail( 'excerpt-thumb' );
+					} elseif ( function_exists( 'get_the_image' ) ) {
+						get_the_image( array( 'size' => 'thumbnail' ) );
+					}
 					the_excerpt();
 				}
 				?>
@@ -83,7 +112,7 @@ if ( have_posts() ) {
 
 			<?php
 			// Don't display meta information on static pages
-			if ( is_singular() && ! is_page() ) { ?>
+			if ( ! is_page() && ! is_archive() ) { ?>
 			<footer class="entry-meta">
 				<?php
 
@@ -111,8 +140,14 @@ if ( have_posts() ) {
 				<span class="sep"> | </span>
 				<span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'pixopoint' ), __( '1 Comment', 'pixopoint' ), __( '% Comments', 'pixopoint' ) ); ?></span><?php
 				}
+
+				// Edit link
+				edit_post_link( __( 'Edit', 'pixopoint' ), '<span class="sep"> | </span><span class="edit-link">', '</span>' );
 				?>
 			</footer><!-- .entry-meta --><?php
+			} elseif ( ! is_archive() ) {
+				// Display edit link on static pages
+				edit_post_link( __( 'Edit', 'pixopoint' ), '<footer class="entry-meta"><span class="edit-link">', '</span></footer>' );
 			}
 			?>
 
