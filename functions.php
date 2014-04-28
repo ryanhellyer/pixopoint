@@ -21,6 +21,15 @@ class PixoPoint_Setup {
 		global $content_width;
 		$content_width = 680;
 
+		// Add theme support
+		add_theme_support( 'html5', array( 'gallery' ) ); 
+//		add_theme_support( 'html5', 'gallery' );
+		add_theme_support( 'html5' ); 
+
+		// Add filters
+		add_filter( 'wp_title', array( $this, 'title_tag' ), 10, 2 );
+
+		// Add hooks
 		add_action( 'admin_init',                           array( $this, 'register_setting' ) );
 		add_action( 'admin_menu',                           array( $this, 'admin_menu' ) );
 		add_action( 'after_setup_theme',                    array( $this, 'theme_setup' ) );
@@ -30,7 +39,7 @@ class PixoPoint_Setup {
 		add_action( 'wp_enqueue_scripts',                   array( $this, 'comment_reply' ) );
 		add_action( 'customize_register',                   array( $this, 'customize_register' ) );
 		add_action( 'customize_render_control_header-text', array( $this, 'customizer_help' ) );
-		add_filter( 'wp_title',                             array( $this, 'title_tag' ), 10, 2 );
+
 	}
 
 	/**
