@@ -1,5 +1,7 @@
 <?php
 
+define( 'PIXOPOINT_THUMB_SIZE', 150 );
+
 /**
  * Primary class used to load the theme
  *
@@ -227,7 +229,7 @@ class PixoPoint_Setup {
 
 		// Enable support for Post Thumbnails
 		add_theme_support( 'post-thumbnails' );
-		add_image_size( 'excerpt-thumb', 250, 350 );
+		add_image_size( 'excerpt-thumb', PIXOPOINT_THUMB_SIZE, PIXOPOINT_THUMB_SIZE );
 		add_image_size( 'attachment-page', 1000, 1500 );
 	}
 

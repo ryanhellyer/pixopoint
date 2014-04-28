@@ -35,6 +35,9 @@ if ( have_posts() ) {
 					the_post_thumbnail( 'excerpt-thumb' );
 				} elseif ( function_exists( 'get_the_image' ) ) {
 					get_the_image( array( 'size' => 'thumbnail' ) );
+				} else {
+					$author_email = get_the_author_meta( 'email' );
+					echo get_avatar( $author_email, PIXOPOINT_THUMB_SIZE );
 				}
 			}
 			?>

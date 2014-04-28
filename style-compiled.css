@@ -393,14 +393,17 @@ article {
   border-bottom: 1px dotted #e5e5e5;
   background-image: linear-gradient(to bottom, #f9f9f9 0%, white 40%); }
 
+body .wp-caption.alignleft,
 .alignleft {
   float: left;
   margin: 0 1em 1em 0; }
 
+body .wp-caption.aligncenter,
 .aligncenter {
   margin: 0 auto;
   display: block; }
 
+body .wp-caption.alignright,
 .alignright {
   float: right;
   margin: 0 0 1em 1em; }
@@ -457,6 +460,7 @@ td {
 .home footer.entry-meta {
   float: left; }
 
+.avatar,
 .thumbnail,
 .attachment-excerpt-thumb {
   float: left;
@@ -695,12 +699,13 @@ ol.commentlist {
   ol.commentlist li.trackback .comment-body,
   ol.commentlist li.pingback .comment-body,
   ol.commentlist li.comment .comment-body {
-    padding: 1.5em 1.5em 1.5em 25%; }
+    padding: 0.9em 0.9em 0.9em 22%; }
   ol.commentlist .comment-body p {
     margin-top: 0.4em;
     padding: 1em 1.5em 0 1.5em;
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
-    background-image: linear-gradient(to top, transparent 80%, rgba(0, 0, 0, 0.03) 100%); }
+    border-top: 1px solid rgba(0, 0, 0, 0.05); }
+    ol.commentlist .comment-body p:first-child {
+      background-image: linear-gradient(to top, transparent 80%, rgba(0, 0, 0, 0.03) 100%); }
   ol.commentlist li.comment li.comment {
     font-size: 1em;
     margin: 1.5em 0 0 0; }
@@ -733,7 +738,7 @@ ol.commentlist {
 
 .comment-meta {
   font-size: 0.7em;
-  padding: 0 1.5em 0 1.5em; }
+  padding: 0 0.9em 0 0.9em; }
 
 .reply {
   padding-left: 1.5em; }
@@ -1003,6 +1008,8 @@ ol.commentlist {
     width: 94%;
     border-left: none; } }
 @media (max-width: 350px) {
+  article .avatar,
+  article .thumbnail,
   article .attachment-excerpt-thumb {
     float: none;
     display: block;
